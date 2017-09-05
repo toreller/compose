@@ -1,5 +1,5 @@
 organization  in ThisBuild := "io.underscore"
-version       in ThisBuild := "0.6.0-SNAPSHOT"
+version       in ThisBuild := "0.6.1-SNAPSHOT"
 scalaVersion  in ThisBuild := "2.11.8"
 
 licenses      in ThisBuild += ("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
@@ -39,7 +39,7 @@ lazy val core = crossProject
     "org.scala-js"    %% "scalajs-stubs" % scalaJSVersion % Provided,
     "org.scala-lang"   % "scala-reflect" % scalaVersion.value,
     "org.typelevel"  %%% "cats-core"     % "1.0.0-MF",
-    "org.scalatest"   %% "scalatest"     % "2.2.6" % Test
+    "org.scalatest"   %% "scalatest"     % "3.0.1" % Test
   ))
 
 lazy val coreJVM = core.jvm
@@ -62,18 +62,18 @@ lazy val player = crossProject
   .settings(name := "compose-player")
   .settings(
     libraryDependencies ++= Seq(
-      "org.typelevel" %%% "cats" % "0.7.0"
+      "org.typelevel" %%% "cats-core" % "1.0.0-MF"
     )
   )
   .jvmSettings(
     libraryDependencies ++= Seq(
-      "de.sciss"       %% "scalacollider" % "1.20.1",
-      "org.scalatest"  %% "scalatest"     % "2.2.6" % Test
+      "de.sciss"       %% "scalacollider" % "1.22.4",
+      "org.scalatest"  %% "scalatest"     % "3.0.1" % Test
     )
   )
   .jsSettings(
     libraryDependencies ++= Seq(
-      "org.scala-js"  %%% "scalajs-dom" % "0.9.0"
+      "org.scala-js"  %%% "scalajs-dom" % "0.9.3"
     )
   )
 
